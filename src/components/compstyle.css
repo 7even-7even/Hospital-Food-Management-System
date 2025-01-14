@@ -1,0 +1,147 @@
+/* General Container Styling */
+div.menu-container, div.place-order-container, div.order-list-container, div.patient-list-container {
+    background-color: #f4f4f4;
+    border: 2px solid #a3d2ca;
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 800px;
+    font-family: 'Arial', sans-serif;
+}
+div.add-menu{
+    background-color: #e9f5f3;
+    margin: 10px 0;
+    padding: 15px;
+    border: 1px solid #a3d2ca;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #264653;
+}
+h3{
+    font-size: 1rem;
+    font-weight: bold;
+    color: #2a9d8f;
+    margin-bottom: 20px;
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    text-transform: uppercase;
+    border-bottom: 2px solid #2a9d8f;
+    display: inline-block;
+    padding-bottom: 5px; 
+}
+h2{
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2a9d8f;
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #2a9d8f;
+    display: inline-block;
+    padding-bottom: 5px; 
+}
+/* Header Styling */
+h2.patient-list-header, h3.add-new-patient-header, h3.edit-patient-header {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2a9d8f;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #2a9d8f;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+input{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* Patient List Styling */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    background-color: #e9f5f3;
+    margin: 10px 0;
+    padding: 15px;
+    border: 1px solid #a3d2ca;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #264653;
+}
+
+/* Button Styling */
+button {
+    background-color: #2a9d8f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    cursor: pointer;
+    font-size: 1rem;
+    margin: 10pxs;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #122831;
+}
+
+/* Input Field Styling */
+input[type="text"], input[type="number"] {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #a3d2ca;
+    width: 80%;
+    font-size: 1rem;
+}
+
+input[type="text"]:focus, input[type="number"]:focus {
+    outline: none;
+    border-color: #2a9d8f;
+}
+
+/* Highlight Specific Information */
+ul li span {
+    font-weight: bold;
+    color: #2a9d8f;
+}
+
+span {
+    font-weight: bold;
+    color: #2a9d8f;
+}
+
+/* Body Background */
+body {
+    background-color: #f0f8ff;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+button{
+    margin: 10px;
+}
+
+h1{
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #0d3732;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #ffffff;
+    display: inline-block;
+    padding-bottom: 5px;
+}

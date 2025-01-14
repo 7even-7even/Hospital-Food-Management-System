@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Patient {
+  id           Int        @id @default(autoincrement())
+  name         String
+  age          Int
+  dietaryNeeds String
+  dietCharts   DietChart[]
+  deliveries   Delivery[]
+}
+
+model DietChart {
+  id           Int      @id @default(autoincrement())
+  mealType     String
+  patientId    Int
+  patient      Patient  @relation(fields: [patientId], references: [id])
+}
+
+model Delivery {
+  id            Int      @id @default(autoincrement())
+  createdAt     DateTime @default(now())
+  patientId     Int
+  patient       Patient  @relation(fields: [patientId], references: [id])
+  pantryStaffId Int
+  pantryStaff   PantryStaff @relation(fields: [pantryStaffId], references: [id])
+}
+
+model PantryStaff {
+  id          Int        @id @default(autoincrement())
+  name        String
+  role        String
+  deliveries  Delivery[]
+}
