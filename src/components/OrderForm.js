@@ -1,4 +1,3 @@
-// src/OrderForm.js
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -6,25 +5,32 @@ const OrderForm = () => {
   const [patientId, setPatientId] = useState('');
   const [menuId, setMenuId] = useState('');
   const [quantity, setQuantity] = useState(1);
+  const [roomNumber, setRoomNumber] = useState('');
+  
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    const orderData = {
+    // Log the data being sent
+    console.log({
       patientId,
       menuId,
       quantity,
-      totalPrice: quantity * 200.00,  // Assuming average price (you can update with dynamic pricing)
-      status: 'Pending'
-    };
+      roomNumber,
+      status: 'Pending',
+    });
 
-    axios.post('http://localhost:5000/orderform', orderData)
-      .then(response => {
-        alert('Order placed successfully!');
-      })
-      .catch(error => {
-        console.error('There was an error placing the order!', error);
+    try {
+      const response = await axios.post('http://localhost:5000/orderform', {
+        patientId,
+        menuId,
+        quantity,
+        roomNumber,
+        status: 'Pending',
       });
+      console.log('Order placed successfully:', response.data);
+    } catch (error) {
+      console.error('There was an error placing the order!', error);
+    }
   };
 
   return (
@@ -33,29 +39,38 @@ const OrderForm = () => {
       <form onSubmit={handleSubmit}>
         <div>
           <label>Patient ID:</label>
-          <input 
-            type="number" 
-            value={patientId} 
-            onChange={(e) => setPatientId(e.target.value)} 
-            required 
+          <input
+            type="number"
+            value={patientId}
+            onChange={(e) => setPatientId(e.target.value)}
+            required
           />
         </div>
         <div>
           <label>Menu ID:</label>
-          <input 
-            type="number" 
-            value={menuId} 
-            onChange={(e) => setMenuId(e.target.value)} 
-            required 
+          <input
+            type="number"
+            value={menuId}
+            onChange={(e) => setMenuId(e.target.value)}
+            required
           />
         </div>
         <div>
           <label>Quantity:</label>
-          <input 
-            type="number" 
-            value={quantity} 
-            onChange={(e) => setQuantity(e.target.value)} 
-            required 
+          <input
+            type="number"
+            value={quantity}
+            onChange={(e) => setQuantity(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Room Number:</label>
+          <input
+            type="number"
+            value={roomNumber}
+            onChange={(e) => setRoomNumber(e.target.value)}
+            required
           />
         </div>
         <button type="submit">Place Order</button>

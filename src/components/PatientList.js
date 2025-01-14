@@ -128,6 +128,7 @@ function PatientList() {
       {editPatient && (
         <div>
           <h3>Edit Patient</h3>
+          <br></br>
           <input
             type="text"
             placeholder="Name"
