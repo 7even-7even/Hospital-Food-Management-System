@@ -6,7 +6,7 @@ const OrderForm = () => {
   const [menuId, setMenuId] = useState('');
   const [quantity, setQuantity] = useState(1);
   const [roomNumber, setRoomNumber] = useState('');
-  
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -20,7 +20,7 @@ const OrderForm = () => {
     });
 
     try {
-      const response = await axios.post('http://localhost:5000/orderform', {
+      const response = await axios.post('http://localhost:5000/orders', {
         patientId,
         menuId,
         quantity,

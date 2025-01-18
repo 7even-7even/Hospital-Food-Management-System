@@ -8,9 +8,9 @@ const PORT = 5000;
 
 // Middleware
 app.use(cors());
-app.use(express.json());  // Ensure this is added to parse JSON body
+app.use(express.json()); // Parse JSON bodies
 
-// Serve static files from React app (Build folder)
+// Serve static files from React app (build folder)
 app.use('/myapp', express.static(path.join(__dirname, 'build')));
 
 // Fetch all menus
@@ -19,7 +19,7 @@ app.get('/menus', async (req, res) => {
     const [results] = await db.query('SELECT * FROM menus');
     res.json(results);
   } catch (err) {
-    console.error(err);
+    console.error('Error fetching menus:', err);
     res.status(500).send('Error fetching menus.');
   }
 });
@@ -42,7 +42,7 @@ app.post('/menus', async (req, res) => {
       menu: { id: result.insertId, name, description, price },
     });
   } catch (err) {
-    console.error(err);
+    console.error('Error adding menu item:', err);
     res.status(500).send('Error adding menu item.');
   }
 });
@@ -68,7 +68,7 @@ app.put('/menus/:id', async (req, res) => {
 
     res.status(200).json({ message: 'Menu item updated successfully!' });
   } catch (err) {
-    console.error(err);
+    console.error('Error updating menu item:', err);
     res.status(500).send('Error updating menu item.');
   }
 });
@@ -86,7 +86,7 @@ app.delete('/menus/:id', async (req, res) => {
 
     res.status(200).json({ message: 'Menu item deleted successfully!' });
   } catch (err) {
-    console.error(err);
+    console.error('Error deleting menu item:', err);
     res.status(500).send('Error deleting menu item.');
   }
 });
@@ -97,7 +97,7 @@ app.get('/patient', async (req, res) => {
     const [results] = await db.query('SELECT * FROM patient');
     res.json(results);
   } catch (err) {
-    console.error(err);
+    console.error('Error fetching patients:', err);
     res.status(500).send('Error fetching patients.');
   }
 });
@@ -120,7 +120,7 @@ app.post('/patient', async (req, res) => {
       patient: { id: result.insertId, name, age, gender, dietType, roomNumber },
     });
   } catch (err) {
-    console.error(err);
+    console.error('Error adding patient:', err);
     res.status(500).send('Error adding patient.');
   }
 });
@@ -138,7 +138,7 @@ app.delete('/patient/:id', async (req, res) => {
 
     res.status(200).json({ message: 'Patient deleted successfully!' });
   } catch (err) {
-    console.error(err);
+    console.error('Error deleting patient:', err);
     res.status(500).send('Error deleting patient.');
   }
 });
@@ -164,12 +164,10 @@ app.put('/patient/:id', async (req, res) => {
 
     res.status(200).json({ message: 'Patient updated successfully!' });
   } catch (err) {
-    console.error(err);
+    console.error('Error updating patient:', err);
     res.status(500).send('Error updating patient.');
   }
 });
-
-// Orders Routes
 
 // Fetch all orders
 app.get('/orders', async (req, res) => {
@@ -177,7 +175,7 @@ app.get('/orders', async (req, res) => {
     const [results] = await db.query('SELECT * FROM orders');
     res.json(results);
   } catch (err) {
-    console.error(err);
+    console.error('Error fetching orders:', err);
     res.status(500).send('Error fetching orders.');
   }
 });
@@ -186,10 +184,6 @@ app.get('/orders', async (req, res) => {
 app.post('/orders', async (req, res) => {
   const { patientId, menuId, quantity, roomNumber, status } = req.body;
 
-  // Log the request body for debugging
-  console.log('Request Body:', req.body);
-
-  // Validate required fields
   if (!patientId || !menuId || !quantity || !roomNumber) {
     return res.status(400).json({ error: 'All fields are required.' });
   }
@@ -202,12 +196,11 @@ app.post('/orders', async (req, res) => {
 
     const price = menuResult[0].price;
     const totalPrice = price * quantity;
-    const orderDate = new Date().toISOString();  // Current date-time
     const orderStatus = status || 'Pending';
 
     const [result] = await db.query(
-      'INSERT INTO orders (patientId, menuId, quantity, totalPrice, roomNumber, status, orderDate) VALUES (?, ?, ?, ?, ?, ?, ?)',
-      [patientId, menuId, quantity, totalPrice, roomNumber, orderStatus, orderDate]
+      'INSERT INTO orders (patientId, menuId, quantity, totalPrice,  status, roomNumber ) VALUES ( ?, ?, ?, ?, ?, ?)',
+      [patientId, menuId, quantity, totalPrice, orderStatus, roomNumber]
     );
 
     res.status(201).json({
@@ -220,11 +213,10 @@ app.post('/orders', async (req, res) => {
         totalPrice,
         roomNumber,
         status: orderStatus,
-        orderDate,
       },
     });
   } catch (err) {
-    console.error(err);
+    console.error('Error placing order:', err);
     res.status(500).send('Error placing order.');
   }
 });

@@ -27,6 +27,7 @@ CREATE TABLE orders (
     totalPrice DECIMAL(10, 2) NOT NULL,
     status VARCHAR(50) DEFAULT 'Pending',
     orderDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    roomNumber INT;
     FOREIGN KEY (patientId) REFERENCES patient(id) ON DELETE CASCADE,
     FOREIGN KEY (menuId) REFERENCES menus(id) ON DELETE CASCADE
 );

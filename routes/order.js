@@ -3,13 +3,14 @@ const router = express.Router();
 const db = require('../db');
 
 // Place a new order
-router.post('/orderform', async (req, res) => {
+router.post('/', async (req, res) => {
   const { patientId, menuId, quantity, roomNumber, status } = req.body;
 
   if (!patientId || !menuId || !quantity || !roomNumber) {
     console.error('Validation error: Missing fields', req.body);
     return res.status(400).json({ error: 'Patient ID, Menu ID, Quantity, and Room Number are required.' });
   }
+
   try {
     // Fetch menu price
     const [menuResult] = await db.query('SELECT price FROM menus WHERE id = ?', [menuId]);
@@ -20,11 +21,11 @@ router.post('/orderform', async (req, res) => {
 
     const price = menuResult[0].price;
     const totalPrice = price * quantity;
+    const orderStatus = status || 'Pending';
 
     const [result] = await db.query(
-      `INSERT INTO orders (patientId, menuId, quantity, totalPrice, roomNumber, orderDate, status) 
-       VALUES (?, ?, ?, ?, ?, NOW(), ?)`,
-      [patientId, menuId, quantity, totalPrice, roomNumber, status]
+      'INSERT INTO orders (patientId, menuId, quantity, totalPrice,  status, roomNumber ) VALUES ( ?, ?, ?, ?, ?, ?)',
+      [patientId, menuId, quantity, totalPrice, orderStatus, roomNumber]
     );
 
     console.log('Order placed successfully:', {
@@ -33,7 +34,8 @@ router.post('/orderform', async (req, res) => {
       menuId,
       quantity,
       totalPrice,
-      status,
+      roomNumber,
+      status: orderStatus,
     });
 
     res.status(201).json({
@@ -45,8 +47,7 @@ router.post('/orderform', async (req, res) => {
         quantity,
         totalPrice,
         roomNumber,
-        status,
-        orderDate: new Date(),
+        status: orderStatus,
       },
     });
   } catch (err) {
