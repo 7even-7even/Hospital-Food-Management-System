@@ -28,3 +28,11 @@ This system ensures patients receive the right meals aligned with their medical 
 - 🛡️ **Secure Authentication**: Login system with JWT-based auth.
 
 ---
+
+## 🚀 Project Setup
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/hospital-food-management.git
+cd hospital-food-management
