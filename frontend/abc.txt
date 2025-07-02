@@ -1,0 +1,11 @@
+john@example.com
+123456
+patient
+
+xyz@gmail.com
+123
+dietitian
+
+admin@gmail.com
+123
+management
