@@ -36,3 +36,24 @@ This system ensures patients receive the right meals aligned with their medical 
 ```bash
 git clone https://github.com/your-username/hospital-food-management.git
 cd hospital-food-management
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/hospital-food-management.git
+cd hospital-food-management
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/hospital-food-management.git
+cd hospital-food-management
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/hospital-food-management.git
+cd hospital-food-management
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/hospital-food-management.git
+cd hospital-food-management
