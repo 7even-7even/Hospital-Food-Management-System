@@ -1,13 +1,15 @@
 .food-items-page {
-  padding: 2rem;
+  padding: 1rem;
   color: #000;
   overflow-x: hidden;
 }
 
 .food-scroll-wrapper {
   overflow-x: auto;
-  width: 155vh;
-  padding-bottom: 1rem;
+  width: 159vh;
+  border: 2px black solid;
+  border-radius: 16px;
+  padding: 1rem;
 }
 
 .food-grid {

@@ -43,9 +43,9 @@ const Navbar = () => {
     return (
         <nav className="custom-navbar">
             <header className="custom-header">
-                <h1 className="header-title">
+                <h2 className="header-title">
                     Hospital Food Management System
-                </h1>
+                </h2>
             </header>
             <div className="navbar-content">
                 {user ? (

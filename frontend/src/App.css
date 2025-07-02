@@ -31,10 +31,7 @@ body {
   background-image: url(assets/background.png);
   background-size: 1200px auto;
   background-repeat: no-repeat;
-
-  /* Here's the magic line that moves image down a bit */
   background-position: center calc(100% + 100px); 
-
   background-attachment: fixed;
   color: var(--text-light);
   transition: var(--transition);
@@ -47,7 +44,7 @@ body {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1500px;
   margin: auto;
   padding: 1rem;
 }

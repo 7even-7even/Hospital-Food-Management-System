@@ -1,7 +1,7 @@
 .dashboard {
   display: flex;
   flex-direction: row;
-  min-height: 82vh;
+  min-height: 84vh;
   transition: all 0.4s ease;
 }
 

@@ -6,7 +6,7 @@ const Footer = () => {
     return (
         <footer className="custom-footer">
             <p>
-                ---© {new Date().getFullYear()} 7even Technologies | All rights reserved---
+                ---© {new Date().getFullYear()} @Siddharth_Ohal | All rights reserved---
             </p>
         </footer>
     );

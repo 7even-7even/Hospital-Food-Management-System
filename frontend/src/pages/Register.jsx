@@ -82,7 +82,7 @@ const Register = () => {
   return (
     <div className="register-wrapper">
       <form className="register-form" onSubmit={handleSubmit}>
-        <h2>Register</h2>
+        <h2>Registeration Form</h2>
         {error && <p className="register-error">{error}</p>}
 
         <div className="input-grid">
