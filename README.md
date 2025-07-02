@@ -34,5 +34,5 @@ This system ensures patients receive the right meals aligned with their medical 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/hospital-food-management.git
+git clone https://github.com/7even-7even/Hospital-Food-Management-System.git
 cd hospital-food-management
